@@ -1,12 +1,10 @@
 # Syrup Ad iOS SDK Guide
 
-[TOC]
+## SDK 정보
+Syrup Ad SDK는 다음과 같은 개발환경에서 개발되었습니다.
 
-## 준비사항
-1. Syrup Ad SDK를 통해 광고를 수신하기 위해서는 Client ID가 필요합니다. http://www.syrupad.co.kr 에서 매체 등록 후 Client ID를 발급 받으세요.
-2. Syrup Ad SDK는 다음과 같은 개발환경에서 개발되었습니다.
 | 항목 | 내용 |
-|:----|:----|
+|:-----|:-----|
 |iOS Base SDK|iOS 9.0|
 |iOS Deployment Target|4.3|
 |Tested iOS Version|4.3 ~ 9.0|
@@ -14,7 +12,9 @@
 |Support Core|arm64, armv7, armv7s|
 |MAC Development OS|OS X El Capatian|
 |Xcode Version|Xcode 7.1.1|
-3. Syrup Ad SDK는 다음과 같은 광고 사이즈를 제공합니다.
+
+Syrup Ad SDK는 다음과 같은 광고 사이즈를 제공합니다.
+
 | 슬롯 | 사이즈 |
 |:----|:----|
 |TadSlotBanner|320x50|
@@ -22,6 +22,9 @@
 |TadSlotFloating|100x100|
 |TadSlotMediumRectangle|300x250|
 |TadSlotLargeBanner|320x100|
+
+## 준비사항
+1. Syrup Ad SDK를 통해 광고를 수신하기 위해서는 Client ID가 필요합니다. http://www.syrupad.co.kr 에서 매체 등록 후 Client ID를 발급 받으세요.
 
 ## 주의사항
 1. 화면의 최상위 view에 banner가 배치되어야 합니다.
@@ -39,7 +42,7 @@ ATS가 적용된 후에는 암호화된 HTTPS 방식만 허용되기에, 기존�
 ```objectivec
 NSAppTransportSecurity NSAllowsArbitraryLoads
 ```
-==ATS(App Transport Security)에 대한 상세 내용은 App Transport Security Technote 를 참고 해주시기 바랍니다. ==
+**ATS(App Transport Security)에 대한 상세 내용은 App Transport Security Technote 를 참고 해주시기 바랍니다.**
 
 ## Step I. Syrup Ad SDK integration
 
@@ -82,21 +85,21 @@ Xcode Project Navigation에서 프로젝트를 선택한 후, 원하는 타겟�
 ![add framework](http://syrupad.github.io/syrupad-ios-sdk/readme-screenshots/add_frameworks.png)
 
 ## Step II. Declaration
-1. 헤더파일 추가
+- 헤더파일 추가
 ```objectivec
 #import "TadCore.h"
 ```
-2. TadCoreDelegate 지정
+- TadCoreDelegate 지정
 ```objectivec
 @interface BaseViewController : UIViewController <TadDelegate, UIActionSheetDelegate, UIAlertViewDelegate, UIActionSheetDelegate>
 ```
-3. SDK 인스턴스 선언
+- SDK 인스턴스 선언
 ```objectivec
 TadCore *tadCore;
 ```
 
 ## Step III. Implementation
-1. 초기화
+- 초기화
 ```objectivec
 -(id) initWithData:(TadDataInfo *) data nibName:(NSString *) nib
 {
@@ -115,7 +118,7 @@ TadCore *tadCore;
 }
 ```
 
-2. viewWillAppear, viewWillDisappear 호출
+- viewWillAppear, viewWillDisappear 호출
 광고 뷰를 가진 컨트롤러에서 viewWillAppear, viewWillDisappear를 반드시 호출하여야 합니다.
 ```objectivec
 -(void) viewWillAppear:(BOOL)animated) {
@@ -130,7 +133,7 @@ TadCore *tadCore;
 }
 ```
 
-3. 광고 제거
+- 광고 제거
 광고의 제거가 필요한 경우나 광고가 포함된 뷰가 종료될 때에는 destroyAd를 반드시 호출하여야 합니다.
 ```objectivec
 [self.tadCore destroyAd];
@@ -222,32 +225,32 @@ SDK 를 초기화하고 구동을 준비합니다.
 - (void)setSeedViewController : ( UIViewController *) seedViewController
 ```
 광고주 페이지로 이동이 될 때 modal 의 기반이 되는 view controller 를 설정합니다.
-==반드시 설정해야 합니다.==
+**반드시 설정해야 합니다.**
 > seedViewController : 뷰 컨트롤
 
 ```objectivec
 - (void)setSeedView : ( UIView *) seedView
 ```
 광고를 배치할 뷰를 지정합니다.
-==반드시 설정해야 합니다.==
+**반드시 설정해야 합니다.**
 > seedView : 광고를 배치할 뷰
 
 ```objectivec
 - (void)bringSubviewToFront:(UIView *)view
 ```
 광고 뷰를 지정한 뷰의 최상위 뷰로 이동시킵니다.
-==TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.==
+**TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.**
 > view : 광고를 배치할 뷰
 
 ```objectivec
 - (void)viewWillAppear:(BOOL)animated
 ```
-==광고 뷰를 가진 컨트롤러의 viewWillAppear에서 반드시 호출해 주어야 합니다.==
+**광고 뷰를 가진 컨트롤러의 viewWillAppear에서 반드시 호출해 주어야 합니다.**
 
 ```objectivec
 - (void)viewWillDisappear:(BOOL)animated
 ```
-==광고 뷰를 가진 컨트롤러의 viewWillDisappear에서 반드시 호출해 주어야 합니다.==
+**광고 뷰를 가진 컨트롤러의 viewWillDisappear에서 반드시 호출해 주어야 합니다.**
 
 ```objectivec
 - (void)setClientID : (NSString *) clientID
@@ -279,14 +282,14 @@ SDK 를 초기화하고 구동을 준비합니다.
 - (void)setPosition: (CGPOINT) offset
 ```
 플로팅 광고 위치의 오프셋을 조정합니다. 오프셋의 기준은 SeedView 입니다.
-==TadSlotFloating 에서만 사용됩니다.==
+**TadSlotFloating 에서만 사용됩니다.**
 > offset : 오프셋 좌표
 
 ```objectivec
 - (void)setAutoRefresh: (NSString *) autoRefresh
 ```
 새로운 광고를 요청하는 주기를 설정합니다.
-==TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.==
+**TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.**
 > autoRefresh : 요청 주기 (default: 20)
 > 
 > | 값 | 설명 |
@@ -299,28 +302,28 @@ SDK 를 초기화하고 구동을 준비합니다.
 - (void)setUseBackFillColor: (BOOL) useBackFillColor
 ```
 배너 배경색의 사용 여부를 On/Off 합니다.
-==TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.==
+**TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.**
 > useBackFillColor : 배경색 사용 여부 (defailt : NO)
 
 ```objectivec
 - (void)setAutoCloseWhenNoInteraction: (BOOL) autoCloseWhenNoInteraction
 ```
 광고 노출 후 사용자의 액션이 없을 시 5 초 후 광고를 자동으로 닫기 여부를 설정합니다.
-==TadSlotInterstitial 에서만 사용됩니다.==
+**TadSlotInterstitial 에서만 사용됩니다.**
 > autoCloseWhenNoInteraction : 자동 닫기 여부 (defailt : NO)
 
 ```objectivec
 - (void)setAutoCloseAfterLeaveApplication:  (BOOL)  autoCloseAfterLeaveApplication
 ```
 광고 클릭 후 랜딩페이지로 이동 시 광고를 자동으로 닫기 여부를 설정합니다.
-==TadSlotInterstitial 에서만 사용됩니다.==
+**TadSlotInterstitial 에서만 사용됩니다.**
 > autoCloseAfterLeaveApplication : 자동 닫기 여부 (defailt : NO)
 
 ```objectivec
 - (void)setAutoClose: (int) autoClose
 ```
 플로팅 광고를 자동으로 닫는 시간을 설정합니다.
-==TadSlotFloating 에서만 사용됩니다.==
+**TadSlotFloating 에서만 사용됩니다.**
 > autoClose : 시간 (defailt : NO)
 > 
 > | 값 | 설명 |
@@ -339,38 +342,38 @@ SDK 로그를 On/Off 합니다.
 - (void)getAdvertisement:(TadDemographicInfo *)info
 ```
 새로운 광고를 요청합니다.
-==반드시 초기화 이후에 호출해야 합니다.==
+**반드시 초기화 이후에 호출해야 합니다.**
 > info : demographics 정보
 
 ```objectivec
 - (void)showAd
 ```
 수신한 광고를 노출합니다.
-==TadSlotInterstitial 에서만 사용됩니다.==
+**ㅍTadSlotInterstitial 에서만 사용됩니다.**
 
 ```objectivec
 - (void)pauseAd
 ```
 배너의 자동 갱신을 정지합니다.
-==TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.==
+**TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.**
 
 ```objectivec
 - (void)resumeAd
 ```
 배너의 자동 갱신을 재개합니다.
-==TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.==
+**TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.**
 
 ```objectivec
 - (void)stopAd
 ```
 배너를 중지합니다.
-==TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.==
+**TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.**
 
 ```objectivec
 - (void)closeAd
 ```
 노출 중인 플로팅 광고를 닫습니다.
-==TadSlotFloating 에서만 사용됩니다.==
+**TadSlotFloating 에서만 사용됩니다.**
 
 ```objectivec
 - (void)destroyAd
