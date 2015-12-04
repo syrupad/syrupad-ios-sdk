@@ -31,12 +31,13 @@ Syrup Ad SDK 에서 제공하는 bringSubviewToFront: 메소드를 사용하여 
 3. 한 개의 화면에 TadCore instance 한 개만을 사용해야 합니다.
 동일 화면에 여러개의 TadCore instance를 사용하는 경우 비정상적인 동작을 할 수 있습니다.
 4. 애플리케이션을 AppStore에 배포할 시에는 (BOOL)isTest 값을 반드시 NO로 설정해 주어야 합니다.
-5. AppStore 배포 시에 아래와 같이 IDFA 사용여부를 Yes로 체크해 주시기 바랍니다.
-<그림>
-6. iOS 9 이상의 버전에는 앱과 웹 서비스 간 연결 보안을 강화하는ATS(App Transport Security) 가적용됩니다.
+5. AppStore 배포 시에 아래와 같이 IDFA 사용여부를 Yes로 체크해 주시기 바랍니다.<br />
+![check use of idfa](http://syrupad.github.io/syrupad-ios-sdk/readme-screenshots/use_idfa.png)
+
+6. iOS 9 이상의 버전에는 앱과 웹 서비스 간 연결 보안을 강화하는ATS(App Transport Security)가 적용 됩니다.
 ATS가 적용된 후에는 암호화된 HTTPS 방식만 허용되기에, 기존에 사용하던 HTTP 방식을 사용할 경우 OS에서 강제 차단되어 광고가 노출되지 않을 수있으니 하단 의 내용을 info.plist 파일에 적용해 주시기 바랍니다.
 ```objectivec
-NSAppTransportSecurity NSAllowsArbitraryLoads 
+NSAppTransportSecurity NSAllowsArbitraryLoads
 ```
 ==ATS(App Transport Security)에 대한 상세 내용은 App Transport Security Technote 를 참고 해주시기 바랍니다. ==
 
@@ -48,19 +49,20 @@ NSAppTransportSecurity NSAllowsArbitraryLoads
 > libTadCore.a
 > TadBundle
 
-<그림>
+![copy files](http://syrupad.github.io/syrupad-ios-sdk/readme-screenshots/copy_files.png)
 
 XCode 상에서 파일을 추가 할 폴더에 우측 클릭 후 Add Files to “...” 를 선택합니다.
-<그림>
+
+![add files](http://syrupad.github.io/syrupad-ios-sdk/readme-screenshots/add_files.png)
 
 복사한 파일을 선택 후 Add를 선택합니다.
-<그림>
+![add files2](http://syrupad.github.io/syrupad-ios-sdk/readme-screenshots/add_files2.png)
 
-###Link Option
+### Link Option
 Xcode Project Navigation에서 프로젝트를 선택한 후, Build Phases에서 아래와 같이 라이브러리 파일을 추가합니다.
-<그림>
+![link library](http://syrupad.github.io/syrupad-ios-sdk/readme-screenshots/link_library.png)
 
-###Add Framework
+### Add Framework
 Syrup Ad SDK는 다음의 프레임워크를 사용합니다.
 > SystemConfiguration.framework
 > CoreTelephony.framework
@@ -77,12 +79,10 @@ Syrup Ad SDK는 다음의 프레임워크를 사용합니다.
 > libxml2.dylib
 
 Xcode Project Navigation에서 프로젝트를 선택한 후, 원하는 타겟의 Build Phases 탭으로 이동합니다. Link Binary With Libraries 메뉴에서 +를 선택하고 필요한 framework 를 추가합니다.
-<그림>
+![add framework](http://syrupad.github.io/syrupad-ios-sdk/readme-screenshots/add_frameworks.png)
 
-## 구현가이드
-###선언부
-<그림>
-1. 헤더파일 첨부
+## Step II. Declaration
+1. 헤더파일 추가
 ```objectivec
 #import "TadCore.h"
 ```
@@ -95,8 +95,7 @@ Xcode Project Navigation에서 프로젝트를 선택한 후, 원하는 타겟�
 TadCore *tadCore;
 ```
 
-###구현부
-<그림>
+## Step III. Implementation
 1. 초기화
 ```objectivec
 -(id) initWithData:(TadDataInfo *) data nibName:(NSString *) nib
