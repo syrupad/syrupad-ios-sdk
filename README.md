@@ -222,14 +222,14 @@ SDK 를 초기화하고 구동을 준비합니다.
 > aDelegate : 콜백을 처리할 딜리게이트
 
 ```objectivec
-- (void)setSeedViewController : ( UIViewController *) seedViewController
+- (void)setSeedViewController:(UIViewController *)seedViewController
 ```
 광고주 페이지로 이동이 될 때 modal 의 기반이 되는 view controller 를 설정합니다.
 **반드시 설정해야 합니다.**
 > seedViewController : 뷰 컨트롤
 
 ```objectivec
-- (void)setSeedView : ( UIView *) seedView
+- (void)setSeedView:(UIView *)seedView
 ```
 광고를 배치할 뷰를 지정합니다.
 **반드시 설정해야 합니다.**
@@ -253,13 +253,13 @@ SDK 를 초기화하고 구동을 준비합니다.
 **광고 뷰를 가진 컨트롤러의 viewWillDisappear에서 반드시 호출해 주어야 합니다.**
 
 ```objectivec
-- (void)setClientID : (NSString *) clientID
+- (void)setClientID:(NSString *)clientID
 ```
 매체 등록 시 발급 받은 클라이언트 아이디를 지정합니다.
 > clientID : 클라이언트 아이디
 
 ```objectivec
-- (void)setSlotNo: (TadSlot) slotNo
+- (void)setSlotNo:(TadSlot)slotNo
 ```
 광고 슬롯을 지정합니다.
 > slotNo : 광고 슬롯
@@ -273,20 +273,20 @@ SDK 를 초기화하고 구동을 준비합니다.
 |TadSlotLargeBanner|320x100|
 
 ```objectivec
-- (void)setOffset: (CGPOINT) offset
+- (void)setOffset:(CGPOINT)offset
 ```
 광고 위치의 오프셋을 조정합니다. 오프셋의 기준은 SeedView 입니다.
 > offset : 오프셋 좌표
 
 ```objectivec
-- (void)setPosition: (CGPOINT) offset
+- (void)setPosition:(CGPOINT)offset
 ```
 플로팅 광고 위치의 오프셋을 조정합니다. 오프셋의 기준은 SeedView 입니다.
 **TadSlotFloating 에서만 사용됩니다.**
 > offset : 오프셋 좌표
 
 ```objectivec
-- (void)setAutoRefresh: (NSString *) autoRefresh
+- (void)setAutoRefresh:(NSString *)autoRefresh
 ```
 새로운 광고를 요청하는 주기를 설정합니다.
 **TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.**
@@ -299,28 +299,28 @@ SDK 를 초기화하고 구동을 준비합니다.
 |60~|60초 간격으로 새로운 광고를 요청합니다.|
 
 ```objectivec
-- (void)setUseBackFillColor: (BOOL) useBackFillColor
+- (void)setUseBackFillColor:(BOOL)useBackFillColor
 ```
 배너 배경색의 사용 여부를 On/Off 합니다.
 **TadSlotBanner, TadSlotMediumRectangle, TadSlotLargeBanner 에서만 사용됩니다.**
 > useBackFillColor : 배경색 사용 여부 (defailt : NO)
 
 ```objectivec
-- (void)setAutoCloseWhenNoInteraction: (BOOL) autoCloseWhenNoInteraction
+- (void)setAutoCloseWhenNoInteraction:(BOOL)autoCloseWhenNoInteraction
 ```
 광고 노출 후 사용자의 액션이 없을 시 5 초 후 광고를 자동으로 닫기 여부를 설정합니다.
 **TadSlotInterstitial 에서만 사용됩니다.**
 > autoCloseWhenNoInteraction : 자동 닫기 여부 (defailt : NO)
 
 ```objectivec
-- (void)setAutoCloseAfterLeaveApplication:  (BOOL)  autoCloseAfterLeaveApplication
+- (void)setAutoCloseAfterLeaveApplication:(BOOL)autoCloseAfterLeaveApplication
 ```
 광고 클릭 후 랜딩페이지로 이동 시 광고를 자동으로 닫기 여부를 설정합니다.
 **TadSlotInterstitial 에서만 사용됩니다.**
 > autoCloseAfterLeaveApplication : 자동 닫기 여부 (defailt : NO)
 
 ```objectivec
-- (void)setAutoClose: (int) autoClose
+- (void)setAutoClose:(int)autoClose
 ```
 플로팅 광고를 자동으로 닫는 시간을 설정합니다.
 **TadSlotFloating 에서만 사용됩니다.**
@@ -349,7 +349,7 @@ SDK 로그를 On/Off 합니다.
 - (void)showAd
 ```
 수신한 광고를 노출합니다.
-**ㅍTadSlotInterstitial 에서만 사용됩니다.**
+**TadSlotInterstitial 에서만 사용됩니다.**
 
 ```objectivec
 - (void)pauseAd
