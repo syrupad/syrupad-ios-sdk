@@ -5,13 +5,13 @@ Syrup Ad SDK는 다음과 같은 개발환경에서 개발되었습니다.
 
 | 항목 | 내용 |
 |:-----|:-----|
-|iOS Base SDK|iOS 9.0|
+|iOS Base SDK|iOS 9.3|
 |iOS Deployment Target|4.3|
-|Tested iOS Version|4.3 ~ 9.0|
+|Tested iOS Version|4.3 ~ 9.3|
 |Tested iOS Device|iphone (3gs, 4, 4s, 5, 5s, 6, 6s), iPad2, new iPad, iPad Retina 디스플레이, iPad Air, iPad Air 2 iPad mini, iPad mini 2, iPad mini 3|
 |Support Core|arm64, armv7, armv7s|
 |MAC Development OS|OS X El Capatian|
-|Xcode Version|Xcode 7.1.1|
+|Xcode Version|Xcode 7.3.1|
 
 Syrup Ad SDK는 다음과 같은 광고 사이즈를 제공합니다.
 
@@ -24,7 +24,7 @@ Syrup Ad SDK는 다음과 같은 광고 사이즈를 제공합니다.
 |TadSlotLargeBanner|320x100|
 
 ## 준비사항
-1. Syrup Ad SDK를 통해 광고를 수신하기 위해서는 Client ID가 필요합니다. http://www.syrupad.co.kr 에서 매체 등록 후 Client ID를 발급 받으세요.
+1. Syrup Ad SDK를 통해 광고를 수신하기 위해서는 Client ID가 필요합니다. [http://www.syrupad.co.kr](http://www.syrupad.co.kr) 에서 매체 등록 후 Client ID를 발급 받으세요.
 
 ## 주의사항
 1. 화면의 최상위 view에 banner가 배치되어야 합니다.
@@ -38,11 +38,18 @@ Syrup Ad SDK 에서 제공하는 bringSubviewToFront: 메소드를 사용하여 
 ![check use of idfa](http://syrupad.github.io/syrupad-ios-sdk/readme-screenshots/use_idfa.png)
 
 6. iOS 9 이상의 버전에는 앱과 웹 서비스 간 연결 보안을 강화하는ATS(App Transport Security)가 적용 됩니다.
-ATS가 적용된 후에는 암호화된 HTTPS 방식만 허용되기에, 기존에 사용하던 HTTP 방식을 사용할 경우 OS에서 강제 차단되어 광고가 노출되지 않을 수있으니 하단 의 내용을 info.plist 파일에 적용해 주시기 바랍니다.
+ATS가 적용된 후에는 암호화된 HTTPS 방식만 허용되기에, 기존에 사용하던 HTTP 방식을 사용할 경우 OS에서 강제 차단되어 광고가 노출되지 않을 수있으니 하단의 내용을 info.plist 파일에 적용해 주시기 바랍니다.
+
 ```objectivec
 NSAppTransportSecurity NSAllowsArbitraryLoads
 ```
+
 **ATS(App Transport Security)에 대한 상세 내용은 App Transport Security Technote 를 참고 해주시기 바랍니다.**
+
+7. Xcode 7 이상의 버전에는 LLVM Compiler가 Bitcode 사용을 자동으로 활성화합니다. Syrup Ad SDK는 이를 지원하고 있지 않으므로 컴파일 과정에서 에러가 발생할 수 있습니다. 따라서 프로젝트 설정의 Build Settings에서 하단 스크린 샷과 같이 Bitcode를 ```NO```로 설정해주시기 바랍니다.
+
+![bitcode disabled](http://syrupad.github.io/syrupad-ios-sdk/readme-screenshots/bitcode_disabled.png)
+
 
 ## Step I. Syrup Ad SDK integration
 
