@@ -65,8 +65,6 @@ NSAppTransportSecurity NSAllowsArbitraryLoads
 > SADType.h
 > SADDemographicInfo.h
 
-![copy files](http://syrupad.github.io/syrupad-ios-sdk/readme-screenshots/copy_files.png)
-
 XCode 상에서 파일을 추가 할 폴더에 우측 클릭 후 Add Files to “...” 를 선택합니다.
 
 ![add files](http://syrupad.github.io/syrupad-ios-sdk/readme-screenshots/add_files.png)
@@ -170,7 +168,7 @@ sadBanner.slotNo = TadSlotBanner;
 
 #### Interstitial
 ```objectivec
-## SADInterstitial *sadInterstitial = [[SADBanner alloc] initWithSeedViewController:self];
+SADInterstitial *sadInterstitial = [[SADBanner alloc] initWithSeedViewController:self];
 sadInterstitial.delegate = self;
 sadInterstitial.clientID = @"IXT003001";
 sadInterstitial.slotNo = TadSlotInterstitial;
