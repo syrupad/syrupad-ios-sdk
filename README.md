@@ -5,13 +5,13 @@ Syrup Ad SDK는 다음과 같은 개발환경에서 개발되었습니다.
 
 | 항목 | 내용 |
 |:-----|:-----|
-|iOS Base SDK|iOS 9.3|
-|iOS Deployment Target|4.3|
-|Tested iOS Version|4.3 ~ 9.3|
+|iOS Base SDK|iOS 10.2|
+|iOS Deployment Target|6.0|
+|Tested iOS Version|6.0 ~ 10.2|
 |Tested iOS Device|iphone (3gs, 4, 4s, 5, 5s, 6, 6s), iPad2, new iPad, iPad Retina 디스플레이, iPad Air, iPad Air 2 iPad mini, iPad mini 2, iPad mini 3|
 |Support Core|arm64, armv7, armv7s|
-|MAC Development OS|OS X El Capatian|
-|Xcode Version|Xcode 7.3.1|
+|MAC Development OS| macOS Sierra (10.12.2)|
+|Xcode Version|Xcode 8.2.1|
 
 Syrup Ad SDK는 다음과 같은 광고 사이즈를 제공합니다.
 
@@ -393,16 +393,6 @@ SDK 로그를 On/Off 합니다.
 
 ### Callbacks
 ```objectivec
-- (void)tadOnAdWillReceive:(TadCore *)tadCore
-```
-광고를 요청하기 직전에 호출됩니다.
-
-```objectivec
-- (void)tadOnAdReceived:(TadCore *)tadCore
-```
-광고의 수신을 완료하면 호출됩니다.
-
-```objectivec
 - (void)tadOnAdWillLoad:(TadCore *)tadCore
 ```
 광고를 로드할 때 호출됩니다.
@@ -419,6 +409,16 @@ SDK 로그를 On/Off 합니다.
 > value : 사용자가 닫은 여부
 
 ```objectivec
+- (void)tadOnAdClicked:(TadCore *)tadCore;
+```
+사용자가 광고를 클릭한 경우 호출 됩니다.
+
+```objectivec
+- (void)tadOnAdTouchDown:(TadCore *)tadCore;
+```
+사용자에 의해 광고 영역에서 Touch Down이벤트가 발생한 경우
+
+```objectivec
 - (void)tadOnAdExpanded:(TadCore *)tadCore
 ```
 광고의 확장이 완료되면 호출됩니다.
@@ -432,11 +432,6 @@ SDK 로그를 On/Off 합니다.
 - (void)tadOnAdResized:(TadCore *)tadCore
 ```
 광고의 부분확장이 완료되면 호출됩니다.
-
-```objectivec
-- (void)tadOnAdResizeClosed:(TadCore *)tadCore
-```
-부분확장된 광고가 닫힐 때 호출됩니다.
 
 ```objectivec
 - (void)tadOnAdResizeClosed:(TadCore *)tadCore
